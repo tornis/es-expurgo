@@ -6,10 +6,10 @@ from datetime import datetime, timedelta
 
 # CONF
 # Parametros de conexão com Elastic
-ES_HOSTS = ["http://lab.tornis.com.br:9200"]
+ES_HOSTS = ["http://localhost:9200"]
 ES_AUTH  = True
-ES_USER  = "elastic"
-ES_PASS  = "123456"
+ES_USER  = "user"
+ES_PASS  = "pass"
 # Quais índices serão afetados. Ex: ["index1","index2"] se for todos coloque ["*"]
 INDICES = ["*"]
 # Periodo de retação em dias
