@@ -10,19 +10,25 @@ Script de Expurgo de dados usando a API Delete by Query do Elasticsearch
 * vitualenv 
 * git
 
-1. Passo 1 - Instalando o Virtualenv 
+1. Passo 1 - Instalando o Virtualenv
+
 `
 pip3 install virtualenv 
 `
+
 2. Passo 2 - Criando o virtualenv 
+
 `
 cd /opt 
 virtualenv .venv
 `
+
 3. Passo 3 - Carregando o virtualenv
+
 `
 source /opt/.venv/bin/activate
 `
+
 4. Passo 4 - Copiando o es-expurgo do git
 
 `
@@ -37,16 +43,11 @@ cd es-expurgo
 6. Passo 6 - Configurando o es-expurgo.py 
 
 `vi es-expurgo.py
-CONF
-# Parametros de conexão com Elastic
 ES_HOSTS = ["http://localhost:9200"]
-# Habilita a autenticação
 ES_AUTH  = True
 ES_USER  = "elastic"
 ES_PASS  = "123456"
-# Quais índices serão afetados. Ex: ["index1","index2"] se for todos coloque ["*"]
 INDICES = ["*"]
-# Periodo de retação em dias
 PERIODO_RETENCAO = 365
 `
 
@@ -56,7 +57,8 @@ PERIODO_RETENCAO = 365
 
 8. Passo 8 - Configurando o crontab 
 
-`vi /etc/crontab 
+`
+vi /etc/crontab 
 0 1	* * *	root	/opt/.venv/bin/python /opt/es-expurgo/es-expurgo.py -x >> /tmp/es-expurgo.log 2>&1
 `
 
