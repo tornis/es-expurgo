@@ -38,7 +38,7 @@ class expurgo:
 
     def remove(self, retencao,indices):
         oldTime = self.getTimeStr(retencao)
-        idx = self.getAllIndices(indices)
+        idx = indices
         results = self.es.delete_by_query(index=idx, opaque_id='expurgo-1', wait_for_completion=False, body={
             "query": {
                 "bool": {
