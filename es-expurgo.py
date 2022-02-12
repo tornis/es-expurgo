@@ -41,8 +41,23 @@ class expurgo:
         idx = self.getAllIndices(indices)
         results = self.es.delete_by_query(index=idx, opaque_id='expurgo-1', wait_for_completion=False, body={
             "query": {
-                "range": {
-                    "@timestamp": {"lt": oldTime }
+                "bool": {
+                    "should": [
+                      {
+                        "range": {
+                          "startedAt": {
+                            "lt": oldTime
+                          }
+                        }
+                      },
+                      {
+                        "range": {
+                          "scheduledTime": {
+                            "lt": oldTime
+                          }
+                        }
+                      }
+                    ]
                 }
             }
         })
